@@ -1,0 +1,82 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:DailyHealthLog.ViewModels"
+                    xmlns:vw="clr-namespace:DailyHealthLog.Views"
+                    >
+    <DataTemplate DataType="{x:Type vm:LiquidViewModel}">
+        <vw:LiquidView />
+    </DataTemplate>
+
+    <Style x:Key="DataGridStyle" TargetType="{x:Type GroupItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GroupItem}">
+                    <Expander IsExpanded="True">
+                        <Expander.Header>
+                            <DockPanel>
+                                <TextBlock Text="{Binding Name}" />
+                            </DockPanel>
+                        </Expander.Header>
+                        <Expander.Content>
+                            <ItemsPresenter />
+                        </Expander.Content>
+                    </Expander>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RoundButton" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Name="border"
+                        BorderThickness="1"
+                        Padding="4,2"
+                        BorderBrush="Black"
+                        CornerRadius="3"
+                        Background="GhostWhite"
+                        >
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="LightBlue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource RoundButton}" TargetType="Button" x:Key="MainViewButton">
+        <Setter Property="Width" Value="125" />
+        <Setter Property="Height" Value="25" />
+    </Style>
+
+    <Style BasedOn="{StaticResource RoundButton}" TargetType="Button" x:Key="DailyLogButton">
+        <Setter Property="Width" Value="125" />
+        <Setter Property="Height" Value="21" />
+    </Style>
+
+    <Style BasedOn="{StaticResource RoundButton}" TargetType="Button" x:Key="ViewButton">
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="20" />
+    </Style>
+
+    <Style BasedOn="{StaticResource RoundButton}" TargetType="Button" x:Key="DataGridButton">
+        <Setter Property="Width" Value="75" />
+        <Setter Property="Height" Value="20" />
+    </Style>
+
+    <Style x:Key="LabelBox" TargetType="{x:Type Label}">
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+</ResourceDictionary>

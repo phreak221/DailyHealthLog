@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="DailyHealthLog.Views.Report2View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DailyHealthLog.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ViewResource.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <TabControl Grid.Column="0" Grid.Row="0" Height="385">
+            <TabItem Header="Sleep" Width="110" Height="20" DataContext="{Binding TabCollection[0]}">
+                <local:ReportSleepView />
+            </TabItem>
+            <TabItem Header="Liquids" Width="110" Height="20" DataContext="{Binding TabCollection[1]}">
+                <local:ReportLiquidView />
+            </TabItem>
+            <TabItem Header="Food" Width="110" Height="20" DataContext="{Binding TabCollection[2]}">
+                <local:ReportFoodView />
+            </TabItem>
+            <TabItem Header="Blood Pressures" Width="110" Height="20" DataContext="{Binding TabCollection[3]}">
+                <local:ReportBloodPressureView />
+            </TabItem>
+            <TabItem Header="Medications" Width="110" Height="20" DataContext="{Binding TabCollection[4]}">
+                <local:ReportMedicationView />
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 5 0">
+            <Button Content="Details" Command="{Binding BtnDetails}" Style="{StaticResource DailyLogButton}" />
+            <Button Content="Cancel" Command="{Binding BtnCancel}" Style="{StaticResource DailyLogButton}" Margin="5 0 0 0" />
+        </StackPanel>
+    </Grid>
+</UserControl>

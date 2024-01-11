@@ -1,0 +1,35 @@
+﻿<Window x:Class="DailyHealthLog.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DailyHealthLog"
+        mc:Ignorable="d"
+        Title="Daily Health Logs" Height="500" Width="925">
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowResource.xaml" />
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu Name="mainMenu" IsMainMenu="True" Width="Auto" Grid.Column="0" Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="Main" Command="{Binding MenuMain}" />
+                <MenuItem Header="Open Database" Command="{Binding MenuOpenDb}" />
+                <MenuItem Header="Close Database" Command="{Binding MenuCloseDb}" />
+                <MenuItem Header="Exit" Command="{Binding MenuExit}" />
+            </MenuItem>
+            <MenuItem Header="Reports" Command="{Binding MenuReport}" />
+        </Menu>
+        <HeaderedContentControl Grid.Column="0" Grid.Row="1"
+                                Content="{Binding Path=Workspaces}"
+                                ContentTemplate="{StaticResource WorkspacesTemplate}"
+                                Header="" />
+    </Grid>
+</Window>
